@@ -1,5 +1,3 @@
-const giftIds = [2, 4, 3, 5, 1]
-
 function findFirstRepeated(gifts) {
   let tmp = [];
   for (let i=0; i<gifts.length; i++) {
@@ -11,5 +9,3 @@ function findFirstRepeated(gifts) {
   }
   return -1;
 }
-
-console.log(findFirstRepeated(giftIds));
