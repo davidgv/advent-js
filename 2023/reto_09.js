@@ -1,19 +1,34 @@
-/*  NOTA:
-      Como ya pasaba con el reto 7, el algoritmo es muy sencillo y todo va bien, pero según los "test secretos" del concurso algo no está bien, aunque no indican el qué (???). Seguramente no cumple algo que no se está indicando en el enunciado. A mi parecer son problemas mal redactados...
-*/
-
 function adjustLights(lights) {
-  let numCambios = 0;
-  let luzCorrecta = lights[0];
-  lights.forEach(luz => {
-    if (luz != luzCorrecta) {
-      numCambios++;
-    }
-    if (luzCorrecta == "🔴") {
-      luzCorrecta = "🟢";
+  let cambiosRojo1st = 0; // cambios necesarios usando el rojo primero
+  let cambiosVerde1st = 0; // cambios necesarios usando el verde primero
+  
+  function cambiaLuz() {
+    if (luzActual == "🔴") {
+      return "🟢";
     } else {
-      luzCorrecta = "🔴";
+      return "🔴";
     }
+  }
+
+  let luzActual = "🔴";
+  lights.forEach(luz => {
+    if (luz != luzActual) {
+      cambiosRojo1st++;
+    }
+    luzActual = cambiaLuz();
   });
-  return numCambios;
+
+  luzActual = "🟢";
+  lights.forEach(luz => {
+    if (luz != luzActual) {
+      cambiosVerde1st++;
+    }
+    luzActual = cambiaLuz();
+  });
+
+  if (cambiosRojo1st > cambiosVerde1st) {
+    return cambiosVerde1st;
+  } else {
+    return cambiosRojo1st;
+  }
 }
