@@ -25,5 +25,3 @@ function createChristmasTree(ornaments, height) {
 
   return arbol;
 }
-
-console.log(createChristmasTree("123", 4));
